@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-c12943be1db80cf1114bc267ddf4f9933aca9b28-v2c55207218fb8a0138425cbf7d9675272e240b90",
+  "base_commit": "d55e8868085c70c2b9f2ef859ebacbb50fff85fe",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn_prenormalized",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[96-39190-96039190]",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[agr62000298-agr62000298]",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[n78-89035-n78089035]",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[2001-000002-2001000002]",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[75-425165//r75-75425165]",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[agr",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[n",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[",
+      "openlibrary/utils/tests/test_lccn.py::test_normalize_lccn[85-2"
+    ],
+    "pass_to_pass": [
+      "openlibrary/catalog/add_book/tests/test_match.py::test_editions_match_identical_record"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/add_book/tests/test_match.py",
+      "openlibrary/utils/tests/test_lccn.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-c12943be1db80cf1114bc267ddf4f9933aca9b28-v2c55207218fb8a0138425cbf7d967",
+    "before_repo_set_cmd": "git reset --hard d55e8868085c70c2b9f2ef859ebacbb50fff85fe\ngit clean -fd \ngit checkout d55e8868085c70c2b9f2ef859ebacbb50fff85fe \ngit checkout c12943be1db80cf1114bc267ddf4f9933aca9b28 -- openlibrary/catalog/add_book/tests/test_match.py openlibrary/utils/tests/test_lccn.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "code_quality_enh",
+      "technical_debt_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "\"The golden patch introduces the following new public interfaces:\\n\\nFile: `openlibrary/utils/lccn.py`\\nDescription: New utility module providing functionality to normalize Library of Congress Control Numbers (LCCNs). It is imported by other parts of the codebase and directly exercised by tests.\\n\\nFunction: `normalize_lccn`\\nLocation: `openlibrary/utils/lccn.py`\\nInputs: `lccn: str`\\nOutputs: `str` (normalized LCCN) or a falsy value if the input cannot be normalized\\nDescription: Normalizes a Library of Congress Control Number by trimming whitespace, removing hyphens, lowercasing, stripping `revised` or other suffix fragments, zero-padding the numeric segment for hyphenated year-number forms, and validating against the LCCN namespace pattern. This function is defined at the module top level, imported by other modules, and exercised directly by tests.\\n\\n\""
+  }
+}
