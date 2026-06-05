@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-910b08570210509f3bcfebf35c093a48243fe754-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+  "base_commit": "e9e9d8be33f09cd487b905f339ec3e76ad75e0bb",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "scripts/tests/test_affiliate_server.py::test_process_google_book[input_data0-expected_output0]",
+      "scripts/tests/test_affiliate_server.py::test_process_google_book[input_data1-expected_output1]",
+      "scripts/tests/test_affiliate_server.py::test_process_google_book[input_data2-expected_output2]",
+      "scripts/tests/test_affiliate_server.py::test_process_google_book[input_data3-expected_output3]",
+      "scripts/tests/test_affiliate_server.py::test_process_google_book_no_items",
+      "scripts/tests/test_affiliate_server.py::test_process_google_book_multiple_items"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "scripts/tests/test_affiliate_server.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-910b08570210509f3bcfebf35c093a48243fe754-v0f5aece3601a5b4419f7ccec1dbda",
+    "before_repo_set_cmd": "git reset --hard e9e9d8be33f09cd487b905f339ec3e76ad75e0bb\ngit clean -fd \ngit checkout e9e9d8be33f09cd487b905f339ec3e76ad75e0bb \ngit checkout 910b08570210509f3bcfebf35c093a48243fe754 -- scripts/tests/test_affiliate_server.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "integration_feat",
+      "core_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge",
+      "web_knowledge",
+      "api_knowledge"
+    ],
+    "interface": "Here are the new public interfaces, with entries from non-related files removed.\n\nFunction: fetch_google_book\nLocation: scripts/affiliate_server.py\nInputs: isbn (str) \u2014 ISBN-13\nOutputs: dict containing raw JSON response from Google Books API if HTTP 200, otherwise None\nDescription: Fetches metadata from the Google Books API for the given ISBN.\n\nFunction: process_google_book\nLocation: scripts/affiliate_server.py\nInputs: google_book_data (dict) \u2014 JSON data returned from Google Books\nOutputs: dict with normalized Open Library edition fields if successful, otherwise None\nDescription: Processes Google Books API data into a normalized Open Library edition record.\n\nFunction: stage_from_google_books\nLocation: scripts/affiliate_server.py\nInputs: isbn (str) \u2014 ISBN-10 or ISBN-13\nOutputs: bool \u2014 True if metadata was successfully staged, otherwise False\nDescription: Fetches and stages metadata from Google Books for the given ISBN and adds it to the import batch if found.\n\nFunction: get_current_batch\nLocation: scripts/affiliate_server.py\nInputs: name (str) \u2014 batch name such as \"amz\" or \"google\"\nOutputs: Batch instance corresponding to the provided name\nDescription: Retrieves or creates a batch object for staging import items.\n\nClass: BaseLookupWorker\nLocation: scripts/affiliate_server.py\nDescription: Base threading class for API lookup workers. Processes items from a queue using a provided function.\nMethod: BaseLookupWorker.run(self)\nLocation: scripts/affiliate_server.py\nDescription: Public method to process items from the queue in a loop, invoking the process_item callable for each item retrieved.\n\nClass: AmazonLookupWorker\nLocation: scripts/affiliate_server.py\nDescription: Threaded worker that batches and processes Amazon API lookups, extending BaseLookupWorker.\nMethod: AmazonLookupWorker.run(self)\nLocation: scripts/affiliate_server.py\nDescription: Public method override that batches up to 10 Amazon identifiers from the queue, processes them together using the Amazon batch handler, and manages timing according to API constraints."
+  }
+}
