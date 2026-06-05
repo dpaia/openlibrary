@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-77c16d530b4d5c0f33d68bead2c6b329aee9b996-ve8c8d62a2b60610a3c4631f5f23ed866bada9818",
+  "base_commit": "80f511d3344a1f9743ff6efb0a2bdf0051529e3a",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_well_formatted",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_empty",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_string_rows",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_to_db",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown_empty_lines",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict_missing_fields",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict_missing_fields",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_markdown"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-77c16d530b4d5c0f33d68bead2c6b329aee9b996-ve8c8d62a2b60610a3c4631f5f23ed",
+    "before_repo_set_cmd": "git reset --hard 80f511d3344a1f9743ff6efb0a2bdf0051529e3a\ngit clean -fd \ngit checkout 80f511d3344a1f9743ff6efb0a2bdf0051529e3a \ngit checkout 77c16d530b4d5c0f33d68bead2c6b329aee9b996 -- openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "refactoring_enh",
+      "code_quality_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "web_knowledge",
+      "ui_ux_knowledge"
+    ],
+    "interface": "The following public class and functions have been introduced to the golden patch\n\nClass name: `TableOfContents`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nDescription:\n\nEncapsulates logic for managing a book\u2019s table of contents. Provides parsing from and serialization to both legacy formats and structured formats (markdown or database dicts). Wraps a list of `TocEntry` items with utilities for conversion and cleanup.\n\nFunction name: `from_db` in the class `TableOfContents`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: `db_table_of_contents: list[dict] | list[str] | list[str | dict]` : a TOC from the database, possibly in legacy mixed format.\n\nOutput:`TableOfContents`:  an instance containing cleaned and normalized `TocEntry` items.\n\nDescription:\n\nIt Parses a legacy or modern list of TOC entries from the database into a structured `TableOfContents` instance, filtering out empty entries.\n\nFunction name: `to_db` in the class `TableOfContents`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: None\n\nOutput: `list[dict]`: serialized list of non-empty TOC entries in dictionary form, suitable for DB storage.\n\nDescription:\n\nit serializes the `entries` list into dictionaries for saving back to the database.\n\nFunction name: `from_markdown` in the class `TableOfContents`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: `text: str`: multi-line markdown-style TOC string.\n\nOutput: `TableOfContents`: a structured instance with parsed `TocEntry` objects.\n\nDescription:\n\nIt parses markdown-formatted TOC lines into a structured `TableOfContents` object, skipping empty or malformed lines.\n\nFunction name: `to_markdown` in the class `TableOfContents`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: None\n\nOutput: `str`: markdown representation of the TOC entries.\n\nDescription:\n\nIt serializes the internal `entries` list into a markdown-formatted string, one line per TOC entry.\n\nFunction name: `to_dict` in the class `TocEntry`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: None\n\nOutput: `dict`: dictionary representation of the TOC entry, excluding `None` fields.\n\nDescription:\n\nit converts a `TocEntry` instance into a dictionary by serializing only non-`None` attributes, suitable for storage or transmission.\n\nFunction name: `from_markdown` in the class `TocEntry`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: `line: str`: a single line of TOC in markdown-like format.\n\nOutput: `TocEntry`: a `TocEntry` object representing parsed TOC data.\n\nDescription:\n\nit parses a markdown-formatted TOC line into a `TocEntry` instance by extracting the `level`, `label`, `title`, and `pagenum`. Supports legacy formats and defaults missing fields appropriately.\n\nFunction name: `to_markdown` in the class `TocEntry`\n\nFile: `openlibrary/plugins/upstream/table_of_contents.py`\n\nInput: None\n\nOutput: `str`: markdown string representing the TOC entry.\n\nDescription:\n\nIt serializes the `TocEntry` instance into a markdown-style line using the `level`, `label`, `title`, and `pagenum` attributes.\n\n"
+  }
+}
