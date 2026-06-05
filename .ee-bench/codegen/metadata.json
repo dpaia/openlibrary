@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-5de7de19211e71b29b2f2ba3b1dff2fe065d660f-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "5f7d8d190e2f0d837545e582fd5db99aae51a979",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_isbn_or_asin[1111111111-expected0]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_isbn_or_asin[9780747532699-expected1]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_isbn_or_asin[B06XYHVXVJ-expected2]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_isbn_or_asin[b06xyhvxvj-expected3]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_isbn_or_asin[-expected4]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[1111111111--True]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[-B06XYHVXVJ-True]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[9780747532699--True]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[0--False]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[-0-False]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_valid_identifier[--False]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_identifier_forms[1111111111--expected0]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_identifier_forms[9780747532699--expected1]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_identifier_forms[-B06XYHVXVJ-expected2]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_identifier_forms[9780747532699-B06XYHVXVJ-expected3]",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_identifier_forms[--expected4]"
+    ],
+    "pass_to_pass": [
+      "openlibrary/tests/core/test_models.py::TestEdition::test_url",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_get_ebook_info",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_not_in_private_collection",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_in_borrowable_collection_cuz_not_in_private_collection",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_is_in_private_collection",
+      "openlibrary/tests/core/test_models.py::TestEdition::test_not_in_borrowable_collection_cuz_in_private_collection",
+      "openlibrary/tests/core/test_models.py::TestAuthor::test_url",
+      "openlibrary/tests/core/test_models.py::TestSubject::test_url",
+      "openlibrary/tests/core/test_models.py::TestWork::test_resolve_redirect_chain"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/core/test_models.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-5de7de19211e71b29b2f2ba3b1dff2fe065d660f-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 5f7d8d190e2f0d837545e582fd5db99aae51a979\ngit clean -fd \ngit checkout 5f7d8d190e2f0d837545e582fd5db99aae51a979 \ngit checkout 5de7de19211e71b29b2f2ba3b1dff2fe065d660f -- openlibrary/tests/core/test_models.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "refactoring_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge"
+    ],
+    "interface": "New public interfaces:\n\n- Type: Function\n\n- Name: get_isbn_or_asin\n\n- Path: openlibrary/core/models.py\n\n- Input: isbn_or_asin: str\n\n- Output: tuple[str, str]\n\n- Description: Returns tuple with ISBN in index 0 and ASIN in index 1, with empty string for the unused type.\n\n- Type: Function\n\n- Name: is_valid_identifier\n\n- Path: openlibrary/core/models.py\n\n- Input: isbn: str, asin: str\n\n- Output: bool\n\n- Description: Validates if ISBN has length 10 or 13, or ASIN has length 10.\n\n- Type: Function\n\n- Name: get_identifier_forms\n\n- Path: openlibrary/core/models.py\n\n- Input: isbn: str, asin: str\n\n- Output: list[str]\n\n- Description: Generates list of all valid identifier forms including ISBN-10, ISBN-13, and ASIN variations.\n\n"
+  }
+}
