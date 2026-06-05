@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-798055d1a19b8fa0983153b709f460be97e33064-v13642507b4fc1f8d234172bf8129942da2c2ca26",
+  "base_commit": "7b1ec94b425e4032a8c1b66a5219b4262af49484",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "scripts/tests/test_import_standard_ebooks.py::test_map_data"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "scripts/tests/test_import_standard_ebooks.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-798055d1a19b8fa0983153b709f460be97e33064-v13642507b4fc1f8d234172bf81299",
+    "before_repo_set_cmd": "git reset --hard 7b1ec94b425e4032a8c1b66a5219b4262af49484\ngit clean -fd \ngit checkout 7b1ec94b425e4032a8c1b66a5219b4262af49484 \ngit checkout 798055d1a19b8fa0983153b709f460be97e33064 -- scripts/tests/test_import_standard_ebooks.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "major_bug",
+      "data_bug"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "\"No new interfaces are introduced.\""
+  }
+}
