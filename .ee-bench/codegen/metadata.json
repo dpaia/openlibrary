@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-7f6b722a10f822171501d027cad60afe53337732-ve8c8d62a2b60610a3c4631f5f23ed866bada9818",
+  "base_commit": "febda3f008cb4d4e4e0568ab4d671992ceea07cf",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Misc]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Quotes]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Operators]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[ISBN-like]"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py::test_process_facet",
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py::test_get_doc",
+      "openlibrary/utils/tests/test_utils.py::test_str_to_key",
+      "openlibrary/utils/tests/test_utils.py::test_finddict",
+      "openlibrary/utils/tests/test_utils.py::test_extract_numeric_id_from_olid"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py",
+      "openlibrary/utils/tests/test_utils.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-7f6b722a10f822171501d027cad60afe53337732-ve8c8d62a2b60610a3c4631f5f23ed",
+    "before_repo_set_cmd": "git reset --hard febda3f008cb4d4e4e0568ab4d671992ceea07cf\ngit clean -fd \ngit checkout febda3f008cb4d4e4e0568ab4d671992ceea07cf \ngit checkout 7f6b722a10f822171501d027cad60afe53337732 -- openlibrary/plugins/worksearch/schemes/tests/test_works.py openlibrary/plugins/worksearch/tests/test_worksearch.py openlibrary/utils/tests/test_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "minor_bug",
+      "edge_case_bug",
+      "refactoring_enh",
+      "code_quality_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge",
+      "api_knowledge"
+    ],
+    "interface": "Type: New File \n\nName: works.py\n\nPath: openlibrary/plugins/worksearch/schemes/works.py\n\nDescription:\n\nDefines the WorkSearchScheme, a subclass of SearchScheme, for handling work-specific search query normalization, field mapping, special-case transformations (like ISBN normalization), and advanced Solr query parameter construction.\n\nType: New Public Class \n\nName: WorkSearchScheme\n\nPath: openlibrary/plugins/worksearch/schemes/works.py\n\nDescription:\n\nA concrete implementation of SearchScheme for work (book) searches. Contains advanced logic for field aliasing, ISBN/LCC/DDC normalization, query tree transformation, and Solr parameter construction for supporting parent-child queries and edition boosting.\n\nType: New Public Function\n\nName: process_user_query\n\nPath: openlibrary/plugins/worksearch/schemes/works.py\n\nInput: self, q_param: str\n\nOutput: str\n\nDescription:\n\nProcesses and transforms a raw user query string into a safe, escaped, and normalized Solr query string, applying scheme-specific field mappings and transformations. This function is directly and exhaustively covered by the tests: test_process_user_query[Misc], [Quotes], [Operators], and [ISBN-like]."
+  }
+}
