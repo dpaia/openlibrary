@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-322d7a46cdc965bfabbf9500e98fde098c9d95b2-v13642507b4fc1f8d234172bf8129942da2c2ca26",
+  "base_commit": "0d5acead6fdfb5e41a1d29a076a6e89ad1a39027",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/solr/test_update_work.py::TestAuthorUpdater::test_workless_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_keys::test_delete",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_keys::test_redirects",
+      "openlibrary/tests/solr/test_update_work.py::TestWorkSolrUpdater::test_no_title",
+      "openlibrary/tests/solr/test_update_work.py::TestWorkSolrUpdater::test_work_no_title",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_successful_response",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_non_json_solr_503",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_solr_offline",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_invalid_solr_request",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_bad_apple_in_solr_request",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_other_non_ok_status"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/solr/test_update_work.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-322d7a46cdc965bfabbf9500e98fde098c9d95b2-v13642507b4fc1f8d234172bf81299",
+    "before_repo_set_cmd": "git reset --hard 0d5acead6fdfb5e41a1d29a076a6e89ad1a39027\ngit clean -fd \ngit checkout 0d5acead6fdfb5e41a1d29a076a6e89ad1a39027 \ngit checkout 322d7a46cdc965bfabbf9500e98fde098c9d95b2 -- openlibrary/tests/solr/test_update_work.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "code_quality_enh",
+      "refactoring_enh",
+      "scalability_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "devops_knowledge"
+    ],
+    "interface": "## Class: `SolrUpdateState`\n\n- Location `openlibrary/solr/update_work.py`\n- Description Holds the full state of a Solr update, including adds, deletes, commit flag, and original keys.\n\nFields\n\n- `adds: list[SolrDocument]` \u2014 documents to add/update\n- `deletes: list[str]` \u2014 IDs/keys to delete\n- `keys: list[str]` \u2014 original input keys being processed\n- `commit: bool` \u2014 whether to send a commit command\n\nMethods\n\n- `to_solr_requests_json(indent: str | None = None, sep: str = ',') -> str` \u2014 Serializes the state into a Solr-compatible JSON command body.\n- `has_changes() -> bool` \u2014 Returns `True` if `adds` or `deletes` contains entries.\n- `clear_requests() -> None` \u2014 Clears `adds` and `deletes`.\n\nOperator\n\n- `__add__(other: SolrUpdateState) -> SolrUpdateState` \u2014 Returns a merged update state.\n\n\n## Function: `solr_update`\n\n- Location `openlibrary/solr/update_work.py`\n- Signature\n\n\u00a0 `solr_update(update_request: SolrUpdateState, skip_id_check: bool = False, solr_base_url: str | None = None) -> None`\n- Description Sends the Solr update using `update_request.to_solr_requests_json(...)`.\n\n## Class: `AbstractSolrUpdater`\n\n- Location `openlibrary/solr/update_work.py`\n- Description Abstract base for Solr updater implementations.\n\nMethods\n\n- `key_test(key: str) -> bool` \u2014 Returns `True` if this updater should handle the key.\n- `preload_keys(keys: Iterable[str]) -> Awaitable[None]` (async) \u2014 Preloads documents for efficient processing.\n- `update_key(thing: dict) -> Awaitable[SolrUpdateState]` (async) \u2014 Processes the input document and returns required Solr updates.\n\n## Class: `EditionSolrUpdater` (subclass of `AbstractSolrUpdater`)\n\n- Location `openlibrary/solr/update_work.py`\n- Description Handles edition records; routes to works or creates a synthetic work when needed.\n\n\nMethods\n\n- `update_key(thing: dict) -> Awaitable[SolrUpdateState]` (async) \u2014 Determines work(s) to update from an edition or returns a synthetic fallback update.\n\n## Class: `WorkSolrUpdater` (subclass of `AbstractSolrUpdater`)\n\n- Location `openlibrary/solr/update_work.py`\n- Description Processes work documents (including synthetic ones derived from editions) and handles IA-based key cleanup.\n\nMethods\n\n- `preload_keys(keys: Iterable[str]) -> Awaitable[None]` (async) \u2014 Preloads work docs and their editions.\n- `update_key(work: dict) -> Awaitable[SolrUpdateState]` (async) \u2014 Builds and returns Solr updates for a work.\n\n\n## Class: `AuthorSolrUpdater` (subclass of `AbstractSolrUpdater`)\n\n- Location `openlibrary/solr/update_work.py`\n- Description Updates author documents and adds computed fields (`work_count`, `top_subjects`) via Solr facet queries.\n\nMethods\n\n- `update_key(thing: dict) -> Awaitable[SolrUpdateState]` (async) \u2014 Constructs the author Solr document with derived statistics.\n\n## Function: `update_keys`\n\n- Location `openlibrary/solr/update_work.py`\n- Signature\u00a0 `update_keys(keys: list[str], commit: bool = True, output_file: str | None = None, skip_id_check: bool = False, update: Literal['update', 'print', 'pprint', 'quiet'] = 'update') -> Awaitable[SolrUpdateState]` *(async)\n- Description Routes keys to the appropriate updater(s), aggregates results into a single `SolrUpdateState`, and optionally performs/prints the Solr request."
+  }
+}
