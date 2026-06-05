@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-630221ab686c64e75a2ce253c893c033e4814b2e-v93c53c13d5f9b383ebb411ee7750b49dcd1a34c6",
+  "base_commit": "247986f00311d9ee34009b0bb02d0d3bd7497ebd",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_add_award",
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_award_removal",
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_award_limit",
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_award_not_authenticated",
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_add_unread_award",
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py::test_bestbook_count"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/openlibrary/tests/test_bestbookapi.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-630221ab686c64e75a2ce253c893c033e4814b2e-v93c53c13d5f9b383ebb411ee7750b",
+    "before_repo_set_cmd": "git reset --hard 247986f00311d9ee34009b0bb02d0d3bd7497ebd\ngit clean -fd \ngit checkout 247986f00311d9ee34009b0bb02d0d3bd7497ebd \ngit checkout 630221ab686c64e75a2ce253c893c033e4814b2e -- openlibrary/plugins/openlibrary/tests/test_bestbookapi.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat",
+      "integration_feat",
+      "api_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "The golden patch introduces several new public interfaces:\n\n- Name: bestbook_award\n\n\u00a0 - Type: Class | API Endpoint (POST)\n\n\u00a0 - Path: openlibrary/plugins/openlibrary/api.py\n\n\u00a0 - Input: `work_id`, `op` (with [\"add\", \"remove\", \"update\"]), `edition_key`, `topic`, `comment`.\u00a0\n\n\u00a0 - Output: JSON-encoded string (str). On error: { \"errors\": \"<message>\" }.\u00a0\u00a0 - Description: Manages Best Book Award nominations for a specific work, allowing authenticated users to add, update, or remove awards with constraints on read status and uniqueness.\n\n\n- Name: bestbook_count\n\n\u00a0 - Type: Class | API Endpoint\u00a0 (GET)\n\n\u00a0 - Path: /awards/count\n\n\u00a0 - Input: `work_id`, `username`, `topic`.\n\n\u00a0 - Output: JSON response with count of matching awards\n\n\u00a0 - Description: Returns the count of best book awards matching the specified filter criteria\n\n\n- Name: get_count\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bestbook.py (Bestbook class)\n\n\u00a0 - Input: work_id:str|None, username:str|None, topic:str|None\n\n\u00a0 - Output: int (count of matching awards)\n\n\u00a0 - Description: Returns count of best book awards matching the specified filters\n\n\n- Name: get_awards\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bestbook.py (Bestbook class)\n\n\u00a0 - Input: work_id:str|None, username:str|None, topic:str|None\n\n\u00a0 - Output: list (award objects matching filters)\n\n\u00a0 - Description: Fetches list of best book awards based on provided filters\n\n\n- Name: add\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bestbook.py (Bestbook class)\n\n\u00a0 - Input: username:str, work_id:str, topic:str, comment:str=\"\", edition_id:int|None=None\n\n\u00a0 - Output: int|None (inserted row ID)\n\n\u00a0 - Description: Adds a new best book award if conditions are met, raises AwardConditionsError otherwise\n\n\n- Name: remove\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bestbook.py (Bestbook class)\n\n\u00a0 - Input: username:str, work_id:str|None=None, topic:str|None=None\n\n\u00a0 - Output: int (number of rows deleted)\n\n\u00a0 - Description: Removes awards matching username and either work_id or topic\n\n\n- Name: get_leaderboard\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bestbook.py (Bestbook class)\n\n\u00a0 - Input: None\n\n\u00a0 - Output: list[dict] (work_id and count pairs)\n\n\u00a0 - Description: Returns leaderboard of works ordered by award count\n\n\n- Name: user_has_read_work\n\n\u00a0 - Type: Class Method\n\n\u00a0 - Path: openlibrary/core/bookshelves.py (Bookshelves class)\n\n\u00a0 - Input: username:str, work_id:str\n\n\u00a0 - Output: bool\n\n\u00a0 - Description: Checks if user has marked the work as \"Already Read\"\n\n\n- Name: get_awards\n\n\u00a0 - Type: Instance Method\n\n\u00a0 - Path: openlibrary/core/models.py (Work class)\n\n\u00a0 - Input: None (uses self.key)\n\n\u00a0 - Output: list (awards for this work)\n\n\u00a0 - Description: Retrieves all best book awards given to this work\n\n\n- Name: check_if_user_awarded\n\n\u00a0 - Type: Instance Method\n\n\u00a0 - Path: openlibrary/core/models.py (Work class)\n\n\u00a0 - Input: username:str\n\n\u00a0 - Output: bool\n\nDescription: Checks if specified user has awarded this work\n\n\n- Name: get_award_by_username\n\n\u00a0 - Type: Instance Method\n\n\u00a0 - Path: openlibrary/core/models.py (Work class)\n\n\u00a0 - Input: username:str\n\n\u00a0 - Output: award_object|None\n\n\u00a0 - Description: Returns the award given by specified user to this work"
+  }
+}
