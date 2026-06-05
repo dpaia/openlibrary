@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-92db3454aeaa02f89b4cdbc3103f7e95c9759f92-v2c55207218fb8a0138425cbf7d9675272e240b90",
+  "base_commit": "4d2c696773853ee7fb4ec0ceb773351a52257447",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "tests/test_docker_compose.py::TestDockerCompose::test_shared_constants"
+    ],
+    "pass_to_pass": [
+      "tests/test_docker_compose.py::TestDockerCompose::test_all_root_services_must_be_in_prod",
+      "tests/test_docker_compose.py::TestDockerCompose::test_all_prod_services_need_profile"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "tests/test_docker_compose.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-92db3454aeaa02f89b4cdbc3103f7e95c9759f92-v2c55207218fb8a0138425cbf7d967",
+    "before_repo_set_cmd": "git reset --hard 4d2c696773853ee7fb4ec0ceb773351a52257447\ngit clean -fd \ngit checkout 4d2c696773853ee7fb4ec0ceb773351a52257447 \ngit checkout 92db3454aeaa02f89b4cdbc3103f7e95c9759f92 -- tests/test_docker_compose.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat",
+      "ui_ux_feat",
+      "api_feat",
+      "performance_feat"
+    ],
+    "issue_categories": [
+      "web_knowledge",
+      "full_stack_knowledge",
+      "performance_knowledge"
+    ],
+    "interface": "No new public interfaces are introduced."
+  }
+}
