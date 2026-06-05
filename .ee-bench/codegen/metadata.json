@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-427f1f4eddfc54735ca451779d4f95bf683d1b0e-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+  "base_commit": "8c988af810a451a2bda2dd080852c81f662aee1e",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_q_to_solr_params_edition_key[edition_key:OL123M-+key:\"/books/OL123M\"]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_q_to_solr_params_edition_key[edition_key:\"OL123M\"-+key:\"/books/OL123M\"]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_q_to_solr_params_edition_key[edition_key:\"/books/OL123M\"-+key:\"/books/OL123M\"]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_q_to_solr_params_edition_key[edition_key:(OL123M)-+key:(\"/books/OL123M\")]"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Misc]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Quotes]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[Operators]",
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py::test_process_user_query[ISBN-like]"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/worksearch/schemes/tests/test_works.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-427f1f4eddfc54735ca451779d4f95bf683d1b0e-v0f5aece3601a5b4419f7ccec1dbda",
+    "before_repo_set_cmd": "git reset --hard 8c988af810a451a2bda2dd080852c81f662aee1e\ngit clean -fd \ngit checkout 8c988af810a451a2bda2dd080852c81f662aee1e \ngit checkout 427f1f4eddfc54735ca451779d4f95bf683d1b0e -- openlibrary/plugins/worksearch/schemes/tests/test_works.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "edge_case_bug",
+      "minor_bug"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "No new interfaces are introduced"
+  }
+}
