@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-e010b2a13697de70170033902ba2e27a1e1acbe9-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+  "base_commit": "b70f9abab445676042e5c300dcf5dd8eac4afd18",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py::test_get_doc"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py::test_process_facet"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/worksearch/tests/test_worksearch.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-e010b2a13697de70170033902ba2e27a1e1acbe9-v0f5aece3601a5b4419f7ccec1dbda",
+    "before_repo_set_cmd": "git reset --hard b70f9abab445676042e5c300dcf5dd8eac4afd18\ngit clean -fd \ngit checkout b70f9abab445676042e5c300dcf5dd8eac4afd18 \ngit checkout e010b2a13697de70170033902ba2e27a1e1acbe9 -- openlibrary/plugins/worksearch/tests/test_worksearch.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "No new interfaces are introduced"
+  }
+}
