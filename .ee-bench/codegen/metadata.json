@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-d109cc7e6e161170391f98f9a6fa1d02534c18e4-ve8c8d62a2b60610a3c4631f5f23ed866bada9818",
+  "base_commit": "daf93507208f2206f8950e3bb5fffac7caf80520",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/core/test_lists_model.py::test_seed_with_string",
+      "openlibrary/tests/core/test_lists_model.py::test_seed_with_nonstring"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/core/test_lists_model.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-d109cc7e6e161170391f98f9a6fa1d02534c18e4-ve8c8d62a2b60610a3c4631f5f23ed",
+    "before_repo_set_cmd": "git reset --hard daf93507208f2206f8950e3bb5fffac7caf80520\ngit clean -fd \ngit checkout daf93507208f2206f8950e3bb5fffac7caf80520 \ngit checkout d109cc7e6e161170391f98f9a6fa1d02534c18e4 -- openlibrary/tests/core/test_lists_model.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "#### Type: Class\n\n**Name:** `AnnotatedSeedDict`\n\n**Path:** `openlibrary/core/lists/model.py`\n\n**Description:** A newly introduced `TypedDict` representing a JSON-friendly structure for a seed that contains both an item reference (`thing`) and a markdown-formatted `notes` field. Used for serializing annotated seeds in APIs and UI.\n\n#### Type: Class\n\n**Name:** `AnnotatedSeed`\n\n**Path:** `openlibrary/core/lists/model.py`\n\n**Description:** A new `TypedDict` defining the internal database representation of an annotated seed. Used inside the `_data` attribute of `Thing` instances when seeds include public notes.\n\n#### Type: Class\n\n**Name:**  AnnotatedSeedThing\n\n**Path: ** openlibrary/core/lists/model.py\n\nInput: None (subclass of Thing, not meant to be instantiated directly)\n\nOutput: None (used for annotation and internal type clarity only)\n\nDescription: Represents a pseudo-Thing wrapper used for documentation and internal consistency when accessing seed data from the database. This class is never constructed or returned at runtime. Instead, it illustrates that database seed records are wrapped in a Thing object, with a _data attribute that conforms to the AnnotatedSeedDict type. The key attribute is set to None and ignored for type checking.\n\n#### Type: Function\n\n**Name:** `from_json`\n\n**Path:** `openlibrary/core/lists/model.py`\n\n**Input:** `list: List`, `seed_json: SeedSubjectString | ThingReferenceDict | AnnotatedSeedDict`\n\n**Output:** `Seed`\n\n**Description:** A newly introduced static method in the `Seed` class. It parses a JSON-compatible seed representation and constructs a `Seed` instance, supporting legacy and annotated formats.\n\n#### Type: Function\n\n**Name:** `to_db`\n\n**Path:** `openlibrary/core/lists/model.py`\n\n**Input:** `self`\n\n**Output:** `Thing | SeedSubjectString`\n\n**Description:** A new instance method in the `Seed` class that returns a database-compatible version of the seed. Annotated seeds are converted into a `Thing` object embedding the original `thing` and `notes`.\n\n#### Type: Function\n\n**Name:** `to_json`\n\n**Path:** `openlibrary/core/lists/model.py`\n\n**Input:** `self`\n\n**Output:** `SeedSubjectString | ThingReferenceDict | AnnotatedSeedDict`\n\n**Description:** A new instance method in the `Seed` class that converts the seed into a JSON-compatible format for frontend and API use. Includes `notes` if present.\n\n"
+  }
+}
