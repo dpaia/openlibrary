@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-09865f5fb549694d969f0a8e49b9d204ef1853ca-ve8c8d62a2b60610a3c4631f5f23ed866bada9818",
+  "base_commit": "50350d0432e2edf3429552bd9b50e78e662df8eb",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_markdown"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_well_formatted",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_empty",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_string_rows",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_to_db",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_complex",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown_empty_lines",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict_missing_fields",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict_missing_fields"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-09865f5fb549694d969f0a8e49b9d204ef1853ca-ve8c8d62a2b60610a3c4631f5f23ed",
+    "before_repo_set_cmd": "git reset --hard 50350d0432e2edf3429552bd9b50e78e662df8eb\ngit clean -fd \ngit checkout 50350d0432e2edf3429552bd9b50e78e662df8eb \ngit checkout 09865f5fb549694d969f0a8e49b9d204ef1853ca -- openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "data_bug",
+      "edge_case_bug"
+    ],
+    "issue_categories": [
+      "front_end_knowledge",
+      "back_end_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "Type: Class  \n\nName: `InfogamiThingEncoder`  \n\nPath:`openlibrary/plugins/upstream/table_of_contents.py`  \n\nDescription:  \n\nThis is a new public class introduced in the patch. It defines a custom JSON encoder that extends `json.JSONEncoder` to support the serialization of Infogami `Thing` and `Nothing` objects. This enables proper JSON output for TOC entries with complex metadata types.\n\nType: Property  \n\nName: `TableOfContents.min_level`  \n\nPath: `openlibrary/plugins/upstream/table_of_contents.py`  \n\nOutput: `int`  \n\nDescription:\n\nThis is a new public cached property introduced on the existing `TableOfContents` class. It returns the minimum level value across all TOC entries. Used to ensure proper indentation in markdown rendering.\n\nType: Function  \n\nName: `TableOfContents.is_complex()`  \n\nPath: `openlibrary/plugins/upstream/table_of_contents.py`  \n\nOutput: `bool`  \n\nDescription:  \n\nThis is a new public method added to the existing `TableOfContents` class. It returns `True` if any TOC entry includes extra fields beyond the standard set, enabling the frontend to warn users about complex data.\n\nType: Property \n\nName: `TocEntry.extra_fields`  \n\nPath: `openlibrary/plugins/upstream/table_of_contents.py`  \n\nOutput: `dict`  \n\nDescription:\n\nThis is a new public cached property added to the existing `TocEntry` class. It returns a dictionary of all non-standard fields that are set on the TOC entry. These extra fields are preserved during serialization and used for advanced metadata tracking. "
+  }
+}
