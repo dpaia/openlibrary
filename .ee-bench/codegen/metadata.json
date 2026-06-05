@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-dbbd9d539c6d4fd45d5be9662aa19b6d664b5137-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "409914bf541b32b2160200b7623060f2b5fab6c0",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_with_data"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_no_data",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds0-expected0]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds1-expected1]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds2-expected2]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds3-expected3]"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-dbbd9d539c6d4fd45d5be9662aa19b6d664b5137-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 409914bf541b32b2160200b7623060f2b5fab6c0\ngit clean -fd \ngit checkout 409914bf541b32b2160200b7623060f2b5fab6c0 \ngit checkout dbbd9d539c6d4fd45d5be9662aa19b6d664b5137 -- openlibrary/plugins/openlibrary/tests/test_lists.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "major_bug",
+      "edge_case_bug"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "No new interfaces are introduced"
+  }
+}
