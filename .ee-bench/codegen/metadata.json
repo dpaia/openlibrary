@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-d40ec88713dc95ea791b252f92d2f7b75e107440-v13642507b4fc1f8d234172bf8129942da2c2ca26",
+  "base_commit": "cbfef314d45fe04e8bf7ebb239f1699606378634",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author0]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author1]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author2]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author3]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author0]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author1]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author2]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author3]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author4]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author5]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_build_query",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Mr.-Mr.]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_match_is_case_insensitive_for_names",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_wildcard_match_with_no_matches_creates_author_with_wildcard",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_first_match_ol_key",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_conflicting_ids_cause_error",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_second_match_remote_identifier",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_third_match_priority_name_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_non_matching_birth_death_creates_new_author",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_match_priority_alternate_names_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_last_match_on_surname_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_last_match_on_surname_and_dates_and_dates_are_required",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_birth_and_death_date_match_is_on_year_strings",
+      "openlibrary/catalog/add_book/tests/test_add_book.py::test_check_cover_url_host[None-False]",
+      "openlibrary/catalog/add_book/tests/test_add_book.py::test_check_cover_url_host[https://not-supported.org/image/123.jpg-False]",
+      "openlibrary/catalog/add_book/tests/test_add_book.py::test_check_cover_url_host[https://m.media-amazon.com/image/123.jpg-True]",
+      "openlibrary/catalog/add_book/tests/test_add_book.py::test_check_cover_url_host[http://m.media-amazon.com/image/123.jpg-True]",
+      "openlibrary/catalog/add_book/tests/test_add_book.py::test_check_cover_url_host[https://m.MEDIA-amazon.com/image/123.jpg-True]"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py",
+      "openlibrary/catalog/add_book/tests/test_add_book.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-d40ec88713dc95ea791b252f92d2f7b75e107440-v13642507b4fc1f8d234172bf81299",
+    "before_repo_set_cmd": "git reset --hard cbfef314d45fe04e8bf7ebb239f1699606378634\ngit clean -fd \ngit checkout cbfef314d45fe04e8bf7ebb239f1699606378634 \ngit checkout d40ec88713dc95ea791b252f92d2f7b75e107440 -- openlibrary/catalog/add_book/tests/test_add_book.py openlibrary/catalog/add_book/tests/test_load_book.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "ui_ux_feat",
+      "core_feat"
+    ],
+    "issue_categories": [
+      "api_knowledge",
+      "back_end_knowledge",
+      "ui_ux_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "The golden patch introduces the following new public interfaces:\n\nFunction: `load_author_import_records`\n\nLocation: `openlibrary/catalog/add_book/__init__.py`\n\nInputs:\n\n- `authors_in` (list): List of author entries to process (each item may be a dict import record or a resolved Author-like object).\n\n- `edits` (list): A shared list that collects records (authors) that would be created/modified.\n\n- `source` (str): The origin/source record identifier (e.g., first entry of `rec['source_records']`).\n\n- `save` (bool, optional, default=True): When False, assign simulated keys and avoid persistence.\n\nOutputs: A tuple `(authors, author_reply)` where:\n\n- `authors` is a list of `{'key': <author_key>}` mappings for edition/work references.\n\n- `author_reply` is a list of response-ready author dicts for API replies.\n\nDescription: Processes import-time author entries, creating new author candidates when needed. In preview (`save=False`), generates temporary keys with the `/authors/__new__{UUID}` prefix and appends the candidate dicts to `edits` without persisting.\n\nFunction: `check_cover_url_host`\n\nLocation: `openlibrary/catalog/add_book/__init__.py`\n\nInputs:\n\n- `cover_url` (str | None): A candidate cover image URL (may be None).\n\n- `allowed_cover_hosts` (Iterable[str]): Case-insensitive allow-list of hostnames.\n\nOutputs: `bool` indicating whether the URL\u2019s host is allowed.\n\nDescription: Validates a cover URL host against the allow-list. Used by the import pipeline to decide if a cover would be accepted; in preview mode, acceptance is reported but no upload/side effect occurs.\n\nFunction: `author_import_record_to_author`\n\nLocation: `openlibrary/catalog/add_book/load_book.py`\n\nInputs:\n\n- `author_import_record` (dict): Dictionary representing the author from the import record.\n\n- `eastern` (bool, optional, default=False): Apply Eastern-name ordering rules when True; otherwise normalize \u201cSurname, Forename\u201d to natural order and drop honorifics.\n\nOutputs: An existing Author-like object with a `key` or a new candidate author `dict` without a key.\n\nDescription: Converts an import-style author dict into an Open Library author reference used by edition/work construction. Performs case-insensitive matching, handles wildcard names, and may raise `AuthorRemoteIdConflictError` on conflicting remote IDs. When no match exists, returns a candidate dict suitable for creation.\n\nFunction: `import_record_to_edition`\n\nLocation: `openlibrary/catalog/add_book/load_book.py`\n\nInputs:\n\n- `rec` (dict): External import edition record (may include authors, description, languages, translated_from, etc.).\n\nOutputs: A normalized Open Library Edition `dict`.\n\nDescription: Builds an Edition dict from an import record, mapping fields (e.g., `description` to typed text), converting `languages`/`translated_from` to key objects, and processing each author via `author_import_record_to_author`. Raises `InvalidLanguage` for unknown languages; used identically in preview and non-preview runs to mirror final outcomes.\n\n"
+  }
+}
