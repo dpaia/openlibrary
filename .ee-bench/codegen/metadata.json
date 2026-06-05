@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-6e889f4a733c9f8ce9a9bd2ec6a934413adcedb9-ve8c8d62a2b60610a3c4631f5f23ed866bada9818",
+  "base_commit": "9a9204b43f9ab94601e8664340eb1dd0fca33517",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_abbrev_from_full_lang_name",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[5-1]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[4-4]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[3-3]"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_url_quote",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_urlencode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_entity_decode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links_unicode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_item_image",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_canonical_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_coverstore_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_reformat_html",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_strip_accents"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/add_book/tests/conftest.py",
+      "openlibrary/plugins/upstream/tests/test_utils.py",
+      "openlibrary/plugins/importapi/tests/test_code.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-6e889f4a733c9f8ce9a9bd2ec6a934413adcedb9-ve8c8d62a2b60610a3c4631f5f23ed",
+    "before_repo_set_cmd": "git reset --hard 9a9204b43f9ab94601e8664340eb1dd0fca33517\ngit clean -fd \ngit checkout 9a9204b43f9ab94601e8664340eb1dd0fca33517 \ngit checkout 6e889f4a733c9f8ce9a9bd2ec6a934413adcedb9 -- openlibrary/catalog/add_book/tests/conftest.py openlibrary/plugins/importapi/tests/test_code.py openlibrary/plugins/upstream/tests/test_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat",
+      "api_feat",
+      "integration_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "\"Created Class LanguageMultipleMatchError File: openlibrary/plugins/upstream/utils.py Input: language_name (string) Output: An instance of LanguageMultipleMatchError Summary: An exception raised when more than one possible language match is found during language abbreviation conversion. Created Class LanguageNoMatchError File: openlibrary/plugins/upstream/utils.py Input: language_name (string) Output: An instance of LanguageNoMatchError Summary: An exception raised when no matching languages are found during language abbreviation conversion. Created Function get_abbrev_from_full_lang_name File: openlibrary/plugins/upstream/utils.py Input: input_lang_name (string), languages (optional, default None, expected as an iterable of language objects) Output: str (the 3-character language code) Summary: Takes a language name (e.g., \\\"English\\\") and returns its 3-character code (e.g., \\\"eng\\\") if a single match is found. It raises a LanguageNoMatchError if no matches are found, and a LanguageMultipleMatchError if multiple matches are found.\""
+  }
+}
