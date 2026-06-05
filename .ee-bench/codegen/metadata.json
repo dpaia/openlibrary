@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-6afdb09df692223c3a31df65cfa92f15e5614c01-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "1a3fab3f0b319e0df49dd742ce2ffa0d747d1b44",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_lists",
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_paths"
+    ],
+    "pass_to_pass": [
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_full_flow",
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_parse_docs",
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_type_to_argparse",
+      "scripts/solr_builder/tests/test_fn_to_cli.py::TestFnToCLI::test_is_optional"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "scripts/solr_builder/tests/test_fn_to_cli.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-6afdb09df692223c3a31df65cfa92f15e5614c01-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 1a3fab3f0b319e0df49dd742ce2ffa0d747d1b44\ngit clean -fd \ngit checkout 1a3fab3f0b319e0df49dd742ce2ffa0d747d1b44 \ngit checkout 6afdb09df692223c3a31df65cfa92f15e5614c01 -- scripts/solr_builder/tests/test_fn_to_cli.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat",
+      "api_feat"
+    ],
+    "issue_categories": [
+      "api_knowledge",
+      "back_end_knowledge"
+    ],
+    "interface": "No new interfaces are introduced."
+  }
+}
