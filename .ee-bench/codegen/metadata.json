@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-0d13e6b4bf80bced6c0946b969b9a1b6963f6bce-v76304ecdb3a5954fcf13feb710e8c40fcf24b73c",
+  "base_commit": "fe6c160d3f2afd9fd70bea62195337fad15c6535",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Dr.",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[dr.",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Dr",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[M.",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Mr",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Mr.",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[monsieur",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Anicet-Bourgeois",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Doctor",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[John"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-0d13e6b4bf80bced6c0946b969b9a1b6963f6bce-v76304ecdb3a5954fcf13feb710e8c",
+    "before_repo_set_cmd": "git reset --hard fe6c160d3f2afd9fd70bea62195337fad15c6535\ngit clean -fd \ngit checkout fe6c160d3f2afd9fd70bea62195337fad15c6535 \ngit checkout 0d13e6b4bf80bced6c0946b969b9a1b6963f6bce -- openlibrary/catalog/add_book/tests/test_load_book.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "core_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "The golden patch introduces the following new public interfaces:\n\nName: `remove_author_honorifics`\nType: function\nLocation: `openlibrary/catalog/add_book/load_book.py`\nInputs: `author: dict` (must include key `\"name\"` with a string value)\nOutputs: `dict` (the same dictionary object, with `\"name\"` potentially modified)\nDescription: Strips a leading honorific from the author\u2019s `\"name\"` when it starts with a configured case-insensitive honorific; leaves names unchanged when they match configured exceptions or when honorific-like tokens appear later in the string. Intended to be used during query building before `import_author`."
+  }
+}
