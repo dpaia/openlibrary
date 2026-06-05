@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-d8162c226a9d576f094dc1830c4c1ffd0be2dd17-v76304ecdb3a5954fcf13feb710e8c40fcf24b73c",
+  "base_commit": "5de7de19211e71b29b2f2ba3b1dff2fe065d660f",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec0-B01234568]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec1-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec2-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec3-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec4-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec5-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec6-B01234568]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec7-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec8-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_get_non_isbn_asin[rec9-None]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec0-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec1-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec2-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec3-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec4-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec5-False]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec6-True]",
+      "openlibrary/tests/catalog/test_utils.py::test_is_asin_only[rec7-True]"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/catalog/test_utils.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-d8162c226a9d576f094dc1830c4c1ffd0be2dd17-v76304ecdb3a5954fcf13feb710e8c",
+    "before_repo_set_cmd": "git reset --hard 5de7de19211e71b29b2f2ba3b1dff2fe065d660f\ngit clean -fd \ngit checkout 5de7de19211e71b29b2f2ba3b1dff2fe065d660f \ngit checkout d8162c226a9d576f094dc1830c4c1ffd0be2dd17 -- openlibrary/tests/catalog/test_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "integration_feat"
+    ],
+    "issue_categories": [
+      "api_knowledge",
+      "back_end_knowledge"
+    ],
+    "interface": "1. Type: Function\nName: get_non_isbn_asin\nPath: openlibrary/catalog/utils/__init__.py\nInput: rec (dict)\nOutput: str | None\nDescription: Returns a non\u2011ISBN ASIN (e.g., B012345678) by checking identifiers.amazon or source_records entries prefixed with amazon:B.\n\n2. Type: Function\nName: is_asin_only\nPath: openlibrary/catalog/utils/__init__.py\nInput: rec (dict)\nOutput: bool\nDescription: Returns True when the record contains a valid ASIN and lacks isbn_10 and isbn_13; otherwise False.\n"
+  }
+}
