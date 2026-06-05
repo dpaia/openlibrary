@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-e1e502986a3b003899a8347ac8a7ff7b08cbfc39-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "77c16d530b4d5c0f33d68bead2c6b329aee9b996",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_markdown"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_well_formatted",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_empty",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_string_rows",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_to_db",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_db_complex",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTableOfContents::test_from_markdown_empty_lines",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_from_dict_missing_fields",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict",
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py::TestTocEntry::test_to_dict_missing_fields"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-e1e502986a3b003899a8347ac8a7ff7b08cbfc39-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 77c16d530b4d5c0f33d68bead2c6b329aee9b996\ngit clean -fd \ngit checkout 77c16d530b4d5c0f33d68bead2c6b329aee9b996 \ngit checkout e1e502986a3b003899a8347ac8a7ff7b08cbfc39 -- openlibrary/plugins/upstream/tests/test_table_of_contents.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "ui_ux_feat",
+      "core_feat",
+      "code_quality_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "web_knowledge",
+      "ui_ux_knowledge"
+    ],
+    "interface": "\"The golden patch introduces the following new public interfaces:\\n\\nProperty: `TableOfContents.min_level`\\nLocation: `openlibrary/plugins/upstream/table_of_contents.py`\\nInputs: None.\\nOutputs: An integer representing the smallest `level` among all `TocEntry` objects in `entries`.\\nDescription: Provides the base indentation level used for rendering or serializing the table of contents.\\n\\nMethod: `TableOfContents.is_complex()`\\nLocation: `openlibrary/plugins/upstream/table_of_contents.py`\\nInputs: None.\\nOutputs: Boolean indicating whether any `TocEntry` contains extra fields.\\nDescription: Detects if the table of contents includes complex metadata such as `authors`, `subtitle`, or `description`.\\n\\nProperty: `TocEntry.extra_fields`\\nLocation: `openlibrary/plugins/upstream/table_of_contents.py`\\nInputs: None.\\nOutputs: A dictionary of all non-null optional fields not in the required set (`level`, `label`, `title`, `pagenum`).\\nDescription: Exposes extended metadata like `authors`, `subtitle`, `description`, and any other dynamic attributes that were parsed from JSON.\""
+  }
+}
