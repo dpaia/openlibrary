@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-5fb312632097be7e9ac6ab657964af115224d15d-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+  "base_commit": "7549c413a901a640aa351933392f503648d345cc",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikipedia_link",
+      "openlibrary/tests/core/test_wikidata.py::test_get_statement_values",
+      "openlibrary/tests/core/test_wikidata.py::test_get_external_profiles",
+      "openlibrary/tests/core/test_wikidata.py::test_get_external_profiles_multiple_social"
+    ],
+    "pass_to_pass": [
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[True-True--True-False]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[True-False--True-False]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[False-False--False-True]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[False-False-expired-True-True]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[False-True--False-True]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[False-True-missing-True-True]",
+      "openlibrary/tests/core/test_wikidata.py::test_get_wikidata_entity[False-True-expired-True-True]"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/core/test_wikidata.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-5fb312632097be7e9ac6ab657964af115224d15d-v0f5aece3601a5b4419f7ccec1dbda",
+    "before_repo_set_cmd": "git reset --hard 7549c413a901a640aa351933392f503648d345cc\ngit clean -fd \ngit checkout 7549c413a901a640aa351933392f503648d345cc \ngit checkout 5fb312632097be7e9ac6ab657964af115224d15d -- openlibrary/tests/core/test_wikidata.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "integration_feat",
+      "ui_ux_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "Create a public method `get_external_profiles(self, language: str = 'en') -> list[dict]` on the class WikidataEntity. This method returns a structured list of external profiles for the entity, where each item is a dict with the keys `url`, `icon_url`, and `label`; it must resolve the Wikipedia link based on the requested `language` with fallback to English and omit it if neither exists, always include a Wikidata entry, and include one entry per supported external identifier such as Google Scholar (producing multiple entries when multiple identifiers are present)."
+  }
+}
