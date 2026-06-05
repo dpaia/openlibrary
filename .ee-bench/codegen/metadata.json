@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-123e6e5e1c85b9c07d1e98f70bfc480bc8016890-v2733ff199fb72f0d033a30dc62cb0a4742e3a7f4",
+  "base_commit": "115079a6a07b6341bb487f954e50384273b56a98",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "scripts/tests/test_affiliate_server.py::test_get_isbns_from_book",
+      "scripts/tests/test_affiliate_server.py::test_get_isbns_from_books",
+      "scripts/tests/test_affiliate_server.py::test_prioritized_identifier_equality_set_uniqueness",
+      "scripts/tests/test_affiliate_server.py::test_prioritized_identifier_serialize_to_json",
+      "scripts/tests/test_affiliate_server.py::test_make_cache_key[isbn_or_asin0-9780747532699]",
+      "scripts/tests/test_affiliate_server.py::test_make_cache_key[isbn_or_asin1-9780747532699]",
+      "scripts/tests/test_affiliate_server.py::test_make_cache_key[isbn_or_asin2-B06XYHVXVJ]",
+      "scripts/tests/test_affiliate_server.py::test_make_cache_key[isbn_or_asin3-]",
+      "scripts/tests/test_affiliate_server.py::test_make_cache_key[isbn_or_asin4-]",
+      "scripts/tests/test_affiliate_server.py::test_unpack_isbn[0123456789-expected0]",
+      "scripts/tests/test_affiliate_server.py::test_unpack_isbn[0-.123456789-expected1]",
+      "scripts/tests/test_affiliate_server.py::test_unpack_isbn[9780123456786-expected2]",
+      "scripts/tests/test_affiliate_server.py::test_unpack_isbn[9-.780123456786-expected3]",
+      "scripts/tests/test_affiliate_server.py::test_unpack_isbn[B012346789-expected4]"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "scripts/tests/test_affiliate_server.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-123e6e5e1c85b9c07d1e98f70bfc480bc8016890-v2733ff199fb72f0d033a30dc62cb0",
+    "before_repo_set_cmd": "git reset --hard 115079a6a07b6341bb487f954e50384273b56a98\ngit clean -fd \ngit checkout 115079a6a07b6341bb487f954e50384273b56a98 \ngit checkout 123e6e5e1c85b9c07d1e98f70bfc480bc8016890 -- scripts/tests/test_affiliate_server.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "core_feat",
+      "integration_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "web_knowledge"
+    ],
+    "interface": "Name: PrioritizedIdentifier  \n\nType: Class (dataclass)  \n\nFile: scripts/affiliate_server.py  \n\nInputs/Outputs:  \n\n  Input: identifier: str, stage_import: bool = True, priority: Priority = Priority.LOW, timestamp: datetime = datetime.now()  \n\n  Output: dict via to_dict(); equality/hash based only on identifier  \n\nDescription: New public queue element class (renamed from PrioritizedISBN). Represents ISBN-13 or Amazon B* ASIN with priority + staging flag for import.  "
+  }
+}
