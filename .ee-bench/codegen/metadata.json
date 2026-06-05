@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-0a90f9f0256e4f933523e9842799e39f95ae29ce-v76304ecdb3a5954fcf13feb710e8c40fcf24b73c",
+  "base_commit": "5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/utils/tests/test_isbn.py::test_isbn_13_to_isbn_10",
+      "openlibrary/utils/tests/test_isbn.py::test_isbn_10_to_isbn_13",
+      "openlibrary/utils/tests/test_isbn.py::test_opposite_isbn",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn_returns_None",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[1841151866-1841151866]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[184115186x-184115186X]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[184115186X-184115186X]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[184-115-1866-1841151866]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[9781841151861-9781841151861]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[978-1841151861-9781841151861]",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[56-None]",
+      "openlibrary/utils/tests/test_isbn.py::test_get_isbn_10_and_13",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_colon_only_loc_pub",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_location_and_publisher",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[123-456-789-X",
+      "openlibrary/utils/tests/test_isbn.py::test_normalize_isbn[ISBN:"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[5-1]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[4-4]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[3-3]",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_url_quote",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_urlencode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_entity_decode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links_unicode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_item_image",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_canonical_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_coverstore_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_reformat_html",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_strip_accents",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_abbrev_from_full_lang_name",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_logs_warning_when_language_has_multiple_matches[Frisian-Multiple",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_logs_warning_when_language_has_multiple_matches[Fake"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/importapi/tests/test_code.py",
+      "openlibrary/utils/tests/test_isbn.py",
+      "openlibrary/plugins/upstream/tests/test_utils.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-0a90f9f0256e4f933523e9842799e39f95ae29ce-v76304ecdb3a5954fcf13feb710e8c",
+    "before_repo_set_cmd": "git reset --hard 5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341\ngit clean -fd \ngit checkout 5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341 \ngit checkout 0a90f9f0256e4f933523e9842799e39f95ae29ce -- openlibrary/plugins/importapi/tests/test_code.py openlibrary/plugins/upstream/tests/test_utils.py openlibrary/utils/tests/test_isbn.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "major_bug",
+      "data_bug",
+      "integration_bug",
+      "edge_case_bug"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "api_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "1. Type: Function\n\n   Name: get_colon_only_loc_pub\n\n   Path: openlibrary/plugins/upstream/utils.py\n\n   Input:\n\n   * pair (str): a single \u201cLocation : Publisher\u201d string.\n\n   Output:\n\n   * (location, publisher) (tuple[str, str]): the part before the colon (trimmed with STRIP_CHARS) as location, and the part after the colon (trimmed with STRIP_CHARS) as publisher.\n\n   Description: Splits a simple \u201cLocation : Publisher\u201d string into its two components. Returns `(\"\", original_string_trimmed)` if no single colon is found. Leaves square brackets intact for the caller to handle.\n\n2. Type: Function\n\n   Name: get_location_and_publisher\n\n   Path: openlibrary/plugins/upstream/utils.py\n\n   Input:\n\n   * loc_pub (str): an Internet Archive publisher metadata string, potentially containing multiple locations separated by `;` and one or more `location : publisher` pairs.\n\n   Output:\n\n   * (locations, publishers) (tuple[list[str], list[str]]):\n\n     * locations: list of location strings (trimmed and with square brackets removed) extracted from before the colon(s).\n\n     * publishers: list of publisher name strings (trimmed and with square brackets removed) extracted from after the colon(s).\n\n   Description: Parses a compound \u201clocations : publisher\u201d string into ordered lists of locations and publisher names. Handles edge cases (empty input, non-string input, list input, presence of the phrase \u201cPlace of publication not identified\u201d, multiple colons) and falls back to returning the entire input as a single publisher when no `:` is present.\n\n3. Type: Function\n\n   Name: get_isbn_10_and_13\n\n   Path: openlibrary/utils/isbn.py\n\n   Input:\n\n   * isbns (str | list[str]): an ISBN or list of ISBN strings with no hyphens.\n\n   Output:\n\n   * (isbn_10_list, isbn_13_list) (tuple[list[str], list[str]]):\n\n     * isbn_10_list: all input strings of length 10 (after trimming).\n\n     * isbn_13_list: all input strings of length 13 (after trimming).\n\n   Description: Classifies raw ISBN metadata into ISBN-10 and ISBN-13 lists based solely on string length, without validation. Callers (e.g., `openlibrary/plugins/importapi/code.py`) should import this function from `openlibrary.utils.isbn`."
+  }
+}
