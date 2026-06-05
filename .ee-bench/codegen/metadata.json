@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-a7b7dc5735a1b3a9824376b1b469b556dd413981-va4315b5dc369c1ef66ae22f9ae4267aa3114e1b3",
+  "base_commit": "79dccb33ad74f3e9f16e69dce2bae7a568c8d3d0",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_remove_child[Group]",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_remove_child[Unary]",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_parser",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_replace_field",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_remove_field",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_remove_child[Complete",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_remove_child[Binary",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_replace_child[Complex",
+      "openlibrary/tests/solr/test_query_utils.py::test_luqum_replace_child[Deeply"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/solr/test_query_utils.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-a7b7dc5735a1b3a9824376b1b469b556dd413981-va4315b5dc369c1ef66ae22f9ae426",
+    "before_repo_set_cmd": "git reset --hard 79dccb33ad74f3e9f16e69dce2bae7a568c8d3d0\ngit clean -fd \ngit checkout 79dccb33ad74f3e9f16e69dce2bae7a568c8d3d0 \ngit checkout a7b7dc5735a1b3a9824376b1b469b556dd413981 -- openlibrary/tests/solr/test_query_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "core_feat",
+      "ui_ux_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge",
+      "api_knowledge",
+      "ui_ux_knowledge"
+    ],
+    "interface": "Type: Function  \nName: luqum_remove_field  \nPath: openlibrary/solr/query_utils.py  \nInput: query (Item), predicate (Callable[[str], bool])  \nOutput: None  \nDescription: Traverses a parsed Luqum query tree and removes any field nodes for which the predicate returns True. The removal is performed in-place by detaching matched fields from their parent nodes.  \n\n"
+  }
+}
