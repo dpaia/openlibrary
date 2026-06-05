@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-acdddc590d0b3688f8f6386f43709049622a6e19-vfa6ff903cb27f336e17654595dd900fa943dcd91",
+  "base_commit": "ba03a119df799aba82ff81b72d3366975de7ceed",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/solr/test_data_provider.py::TestBetterDataProvider::test_get_document",
+      "openlibrary/tests/solr/test_data_provider.py::TestBetterDataProvider::test_clear_cache"
+    ],
+    "pass_to_pass": [
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_simple_work",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_count_when_editions_on_work",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_count_when_editions_in_data_provider",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_key",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_publish_year",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_isbns",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_other_identifiers",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_identifiers",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_ia_boxid",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_lending_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_two_lending_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_inlibrary_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_printdisabled_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_multiple_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_subjects",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_language",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_author_info",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_delete_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_redirect_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_update_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_delete_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_update_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_delete_requests",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_delete_work",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_delete_editions",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_redirects",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_no_title",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_work_no_title",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_no_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_no_work_cover",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_work_cover",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_eng_covers",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_anything"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/solr/test_update_work.py",
+      "openlibrary/tests/solr/test_data_provider.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-acdddc590d0b3688f8f6386f43709049622a6e19-vfa6ff903cb27f336e17654595dd90",
+    "before_repo_set_cmd": "git reset --hard ba03a119df799aba82ff81b72d3366975de7ceed\ngit clean -fd \ngit checkout ba03a119df799aba82ff81b72d3366975de7ceed \ngit checkout acdddc590d0b3688f8f6386f43709049622a6e19 -- openlibrary/tests/solr/test_data_provider.py openlibrary/tests/solr/test_update_work.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "data_bug",
+      "integration_bug",
+      "edge_case_bug"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge",
+      "infrastructure_knowledge"
+    ],
+    "interface": "The golden patch introduces the following new public interfaces:\n\nName: clear_cache\n\nType: Function\n\nLocation: openlibrary/solr/data_provider.py inside class DataProvider\n\nInput: none\n\nOutput: none\n\nDescription: Abstract method that removes any cached state to ensure subsequent data operations reflect current entity information and raises NotImplementedError.\n\n\nName: clear_cache\n\nType: Function\u00a0\u00a0\n\nLocation: openlibrary/solr/data_provider.py inside class LegacyDataProvider\n\nInput: none\n\nOutput: none\n\nDescription: Concrete implementation of the cache clearing interface for compatibility with the data provider contract.\n\n\nName: clear_cache\n\nType: Function\n\nLocation: openlibrary/solr/data_provider.py inside class BetterDataProvider\n\nInput: none\n\nOutput: none\n\nDescription: Clears all maintained cache state to ensure future data retrieval operations fetch current information rather than previously stored values.\n"
+  }
+}
