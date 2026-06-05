@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-6fdbbeee4c0a7e976ff3e46fb1d36f4eb110c428-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "71b18af1fa3b1e0ea6acb368037736be759a8bca",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_normalize_input_seed"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_no_data",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_with_json_data",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds0-expected0]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds1-expected1]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds2-expected2]",
+      "openlibrary/plugins/openlibrary/tests/test_lists.py::TestListRecord::test_from_input_seeds[seeds3-expected3]"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/openlibrary/tests/test_lists.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-6fdbbeee4c0a7e976ff3e46fb1d36f4eb110c428-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 71b18af1fa3b1e0ea6acb368037736be759a8bca\ngit clean -fd \ngit checkout 71b18af1fa3b1e0ea6acb368037736be759a8bca \ngit checkout 6fdbbeee4c0a7e976ff3e46fb1d36f4eb110c428 -- openlibrary/plugins/openlibrary/tests/test_lists.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "code_quality_enh",
+      "refactoring_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "performance_knowledge"
+    ],
+    "interface": "In the file `openlibrary/core/lists/model.py`, there is a new class called `SeedDict` that represents a dictionary-based reference to an Open Library entity (such as an author, edition, or work) by its key. Used as one form of input for list membership operations.\n\nIn the file `openlibrary/plugins/openlibrary/lists.py`, there are two new functions: \n\nThe function `subject_key_to_seed` converts a subject key into a normalized seed subject string like `\"subject:foo\"` or `\"place:bar\"`.\n\n- Input: `key`, a string representing a subject path.\n\n- Output: it returns a simplified string seed: if the subject starts with `\"place:\"`, `\"person:\"`, or `\"time:\"`, returns that part; otherwise returns it prefixed with `\"subject:\"`.\n\nThe function `is_seed_subject_string` returns `True` if the string starts with a valid subject type prefix such as `\"subject:\"`, `\"place:\"`, `\"person:\"`, or `\"time:\"`.\n\n- Input: `seed`: a string.\n\n- Output: boolean (`True` or `False`) indicating whether the string starts with one of these prefixes: `\"subject\"`, `\"place\"`, `\"person\"`, or `\"time\"`."
+  }
+}
