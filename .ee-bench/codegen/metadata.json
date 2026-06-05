@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-7edd1ef09d91fe0b435707633c5cc9af41dedddf-v76304ecdb3a5954fcf13feb710e8c40fcf24b73c",
+  "base_commit": "1d2cbffd8cbda42d71d50a045a8d2b9ebfe1f781",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/worksearch/tests/test_autocomplete.py::test_autocomplete",
+      "openlibrary/plugins/worksearch/tests/test_autocomplete.py::test_works_autocomplete"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/worksearch/tests/test_autocomplete.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-7edd1ef09d91fe0b435707633c5cc9af41dedddf-v76304ecdb3a5954fcf13feb710e8c",
+    "before_repo_set_cmd": "git reset --hard 1d2cbffd8cbda42d71d50a045a8d2b9ebfe1f781\ngit clean -fd \ngit checkout 1d2cbffd8cbda42d71d50a045a8d2b9ebfe1f781 \ngit checkout 7edd1ef09d91fe0b435707633c5cc9af41dedddf -- openlibrary/plugins/worksearch/tests/test_autocomplete.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "code_quality_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "\"Yes, the golden patch introduces:\\n\\nType: Class\\n\\nName: autocomplete\\n\\nPath: openlibrary/plugins/worksearch/autocomplete.py\\n\\nDescription: A new delegate page class that provides a generalized autocomplete endpoint, handling query construction, fallback to the DB via web.ctx.site.get, and response formatting.\\n\\nType: Function\\n\\nName: find_olid_in_string\\n\\nPath: openlibrary/utils/__init__.py\\n\\nInput: s: str, olid_suffix: Optional[str] = None\\n\\nOutput: Optional[str]\\n\\nDescription: Extracts an OLID string from input text, optionally filtering by suffix (e.g., 'A', 'W'). Returns the OLID in uppercase or None.\\n\\nType: Function\\n\\nName: olid_to_key\\n\\nPath: openlibrary/utils/__init__.py\\n\\nInput: olid: str\\n\\nOutput: str\\n\\nDescription: Converts a valid OLID (e.g., OL123W) into its corresponding /works/OL123W, /authors/OL123A, or /books/OL123M path. Raises ValueError on invalid suffix.\\n\\nType: Function\\n\\nName: db_fetch\\n\\nPath: openlibrary/plugins/worksearch/autocomplete.py\\n\\nInput: key: str\\n\\nOutput: Optional[Thing]\\n\\nDescription: Retrieves an object from the site context using its key and returns a solr-compatible dictionary representation, or None if not found.\\n\\nType: Function\\n\\nName: doc_wrap\\n\\nPath: openlibrary/plugins/worksearch/autocomplete.py inside the `autocomplete` class\\n\\nInput: doc: dict\\n\\nOutput: None\\n\\nDescription: Modifies the given solr document in place, typically used to ensure required fields like name are present in the autocomplete response.\""
+  }
+}
