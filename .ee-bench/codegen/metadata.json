@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-1be7de788a444f6255e89c10ef6aa608550604a8-v29f82c9cf21d57b242f8d8b0e541525d259e2d63",
+  "base_commit": "8b933806b52d3785f98d2c397032c8b97a88feb2",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestAuthors::test_author_contrib",
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestTitles::test_build_titles",
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestTitles::test_build_titles_ampersand",
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestTitles::test_build_titles_complex",
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestRecordMatching::test_match_without_ISBN",
+      "openlibrary/catalog/merge/tests/test_merge_marc.py::TestRecordMatching::test_match_low_threshold"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/merge/tests/test_merge_marc.py",
+      "openlibrary/tests/catalog/test_utils.py",
+      "openlibrary/catalog/add_book/tests/test_match.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-1be7de788a444f6255e89c10ef6aa608550604a8-v29f82c9cf21d57b242f8d8b0e5415",
+    "before_repo_set_cmd": "git reset --hard 8b933806b52d3785f98d2c397032c8b97a88feb2\ngit clean -fd \ngit checkout 8b933806b52d3785f98d2c397032c8b97a88feb2 \ngit checkout 1be7de788a444f6255e89c10ef6aa608550604a8 -- openlibrary/catalog/add_book/tests/test_match.py openlibrary/catalog/merge/tests/test_merge_marc.py openlibrary/tests/catalog/test_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "refactoring_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "Type: New function\n\nName: add_db_name\n\nPath: openlibrary/catalog/merge/merge_marc.py\n\nInputs:\n\nrec (dict): A dictionary expected to contain a list of author records under the key 'authors'.\n\nOutput:\n\nReturns nothing (None). The function updates the input dictionary in place.\n\nBehaviour:\n\nAdds a db_name field to each author by combining their name with available date fields. It uses the 'date' field if present, otherwise combines 'birth_date' and 'death_date'.\n\nType: New function\n\nName: expand_record\n\nPath: openlibrary/catalog/merge/merge_marc.py\n\nInputs:\n\nrec (dict): An edition dictionary representing an imported record.\n\nOutput:\n\nReturns a dictionary with normalized and expanded fields for better record comparison.\n\nBehaviour:\n\nConstructs a new dictionary that merges full title, aggregates all ISBNs, retains selected metadata, and enriches authors with db_name values using add_db_name. Used for comparing existing vs. incoming edition records.\n\nType: New Function\n\nName: threshold_match\n\nPath: openlibrary/catalog/merge/merge_marc.py\n\nInputs:\n\ne1 (dict): Dictionary representing an imported edition record.\n\ne2 (dict): Dictionary representing an existing edition record.\n\nthreshold (int): Numeric threshold that defines the similarity score required to consider two editions as the same.\n\ndebug (bool, optional): Flag to enable debug mode for detailed comparison output. Defaults to False.\n\nOutput:\n\nReturns a boolean indicating whether the two editions have sufficient fields in common to be considered the same.\n\nBehaviour:\n\nNormalizes and expands both edition records using expand_record, compares them field by field with level1_merge, sums the similarity scores, and checks if the result meets or exceeds the given threshold. Used when importing new books to decide if an incoming edition matches an existing one."
+  }
+}
