@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-7bf3238533070f2d24bafbb26eedf675d51941f6-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "0c5d154db9a199adc4be35be84390368693b2144",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_simple_work",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_count_when_editions_on_work",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_count_when_editions_in_data_provider",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_edition_key",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_publish_year",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_isbns",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_other_identifiers",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_identifiers",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_ia_boxid",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_lending_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_two_lending_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_inlibrary_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_one_printdisabled_edition",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_get_alternate_titles",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_with_multiple_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_subjects",
+      "openlibrary/tests/solr/test_update_work.py::Test_build_data::test_author_info",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_delete_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_redirect_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_update_author",
+      "openlibrary/tests/solr/test_update_work.py::Test_update_items::test_delete_requests",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_delete_work",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_delete_editions",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_redirects",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_no_title",
+      "openlibrary/tests/solr/test_update_work.py::TestUpdateWork::test_work_no_title",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_no_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_no_work_cover",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_work_cover",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_eng_covers",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_cover_edition::test_prefers_anything",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_number_of_pages_median::test_no_editions",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_number_of_pages_median::test_invalid_type",
+      "openlibrary/tests/solr/test_update_work.py::Test_pick_number_of_pages_median::test_normal_case",
+      "openlibrary/tests/solr/test_update_work.py::Test_Sort_Editions_Ocaids::test_sort",
+      "openlibrary/tests/solr/test_update_work.py::Test_Sort_Editions_Ocaids::test_goog_deprioritized",
+      "openlibrary/tests/solr/test_update_work.py::Test_Sort_Editions_Ocaids::test_excludes_fav_ia_collections",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_successful_response",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_non_json_solr_503",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_solr_offline",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_invalid_solr_request",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_bad_apple_in_solr_request",
+      "openlibrary/tests/solr/test_update_work.py::TestSolrUpdate::test_other_non_ok_status"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/solr/test_update_work.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-7bf3238533070f2d24bafbb26eedf675d51941f6-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 0c5d154db9a199adc4be35be84390368693b2144\ngit clean -fd \ngit checkout 0c5d154db9a199adc4be35be84390368693b2144 \ngit checkout 7bf3238533070f2d24bafbb26eedf675d51941f6 -- openlibrary/tests/solr/test_update_work.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "integration_feat",
+      "api_feat"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "database_knowledge",
+      "api_knowledge"
+    ],
+    "interface": "patch: new\n\nname: WorkReadingLogSolrSummary\n\nlocation: openlibrary/solr/data_provider.py\n\ntype: TypedDict\n\ninput: none\n\noutput: mapping with integer fields readinglog_count, want_to_read_count, currently_reading_count, already_read_count\n\ndescription: Solr-ready summary of reading-log engagement for a single work. Used by the indexing pipeline to enrich the Solr work document.\n\npatch: new\n\nname: DataProvider.get_work_reading_log\n\nlocation: openlibrary/solr/data_provider.py\n\ntype: method on DataProvider\n\ninput: work_key as string\n\noutput: WorkReadingLogSolrSummary or None\n\ndescription: Returns the reading-log counts for the given work in a Solr-ready format. Returning None indicates no reading-log data is available for that work.\n\npatch: update\n\nname: SolrDocument additions\n\nlocation: openlibrary/solr/solr_types.py\n\ntype: type definition change\n\ninput: none\n\noutput: SolrDocument includes optional integer fields readinglog_count, want_to_read_count, currently_reading_count, already_read_count\n\ndescription: Extends the SolrDocument typing so the indexer can legally add the four reading-log count fields.\n\npatch: update\n\nname: update_work document merge\n\nlocation: openlibrary/solr/update_work.py\n\ntype: indexing step\n\ninput: work key obtained during document assembly\n\noutput: work document enriched with readinglog_count, want_to_read_count, currently_reading_count, already_read_count when available\n\ndescription: Calls data_provider.get_work_reading_log and merges the result into the Solr work document using doc.update. If the provider returns None, the document remains unchanged for these four fields."
+  }
+}
