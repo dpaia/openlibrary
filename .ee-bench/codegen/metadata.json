@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-c4eebe6677acc4629cb541a98d5e91311444f5d4-v13642507b4fc1f8d234172bf8129942da2c2ca26",
+  "base_commit": "84cc4ed5697b83a849e9106a09bfed501169cc20",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_find_staged_or_pending[unique_id_1-expected0]",
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_find_staged_or_pending[unique_id_2-expected1]",
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_find_staged_or_pending[unique_id_4-expected2]"
+    ],
+    "pass_to_pass": [
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_delete",
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_delete_with_batch_id",
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_find_pending_returns_none_with_no_results",
+      "openlibrary/tests/core/test_imports.py::TestImportItem::test_find_pending_returns_pending",
+      "openlibrary/tests/core/test_imports.py::TestBatchItem::test_add_items_legacy"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/tests/core/test_imports.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-c4eebe6677acc4629cb541a98d5e91311444f5d4-v13642507b4fc1f8d234172bf81299",
+    "before_repo_set_cmd": "git reset --hard 84cc4ed5697b83a849e9106a09bfed501169cc20\ngit clean -fd \ngit checkout 84cc4ed5697b83a849e9106a09bfed501169cc20 \ngit checkout c4eebe6677acc4629cb541a98d5e91311444f5d4 -- openlibrary/tests/core/test_imports.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "refactoring_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "\"Type: Static method\\n\\nName: find_staged_or_pending\\n\\nPath: openlibrary/core/imports.py\\n\\nInputs: identifiers (list[str]): List of identifier strings (e.g. ISBNs). sources (Iterable[str]): A list of source tags (defaults to STAGED_SOURCES).\\n\\nOutput: Returns a ResultSet containing all rows from the import_item table whose ia_id matches any of the generated {source}:{identifier} values and whose status is either staged or pending.\\n\\nBehavior: Generates ia_id values by combining each source and identifier, then queries the import_item table to return entries with status staged or pending that match those IDs.\""
+  }
+}
