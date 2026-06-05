@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341-v76304ecdb3a5954fcf13feb710e8c40fcf24b73c",
+  "base_commit": "31d6ecf3c04c8e365e557f2a9a6a65df2b8d01a3",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_string_publishers",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_isbn_10_and_isbn_13",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_publishers_with_places",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_isbn_10_and_13",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_publisher_and_place",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_logs_warning_when_language_has_multiple_matches[Frisian-Multiple",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_logs_warning_when_language_has_multiple_matches[Fake"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[5-1]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[4-4]",
+      "openlibrary/plugins/importapi/tests/test_code.py::test_get_ia_record_handles_very_short_books[3-3]",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_url_quote",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_urlencode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_entity_decode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_set_share_links_unicode",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_item_image",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_canonical_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_coverstore_url",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_reformat_html",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_strip_accents",
+      "openlibrary/plugins/upstream/tests/test_utils.py::test_get_abbrev_from_full_lang_name"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/importapi/tests/test_code.py",
+      "openlibrary/plugins/upstream/tests/test_utils.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341-v76304ecdb3a5954fcf13feb710e8c",
+    "before_repo_set_cmd": "git reset --hard 31d6ecf3c04c8e365e557f2a9a6a65df2b8d01a3\ngit clean -fd \ngit checkout 31d6ecf3c04c8e365e557f2a9a6a65df2b8d01a3 \ngit checkout 5c6c22f3d2edf2f1b10f5dc335e32cb6a5f40341 -- openlibrary/plugins/importapi/tests/test_code.py openlibrary/plugins/upstream/tests/test_utils.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "code_quality_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge",
+      "devops_knowledge"
+    ],
+    "interface": "\"1.\\n\\nName: get_isbn_10_and_13\\n\\nType: Function\\n\\nPath: (Not specified, but added in the patch \u2014 likely a utility module)\\n\\nInput: isbns: str | list[str]\\n\\nOutput: tuple[list[str], list[str]] \u2014 a tuple with:\\n\\n- list of ISBN-10 strings\\n\\n- list of ISBN-13 strings\\n\\nPurpose:\\n\\nSeparates a mixed list of ISBN strings into ISBN-10 and ISBN-13 lists based on string length.\\n\\n2.\\n\\nName: get_publisher_and_place\\n\\nType: Function\\n\\nPath: (Same as above)\\n\\nInput: publishers: str | list[str]\\n\\nOutput: tuple[list[str], list[str]] \u2014 a tuple with:\\n\\n- list of publisher names\\n\\n- list of publish places\\n\\nPurpose:\\n\\nParses combined publisher/place strings (e.g. \\\"New York : Simon & Schuster\\\") into separate publisher and publish place lists.\""
+  }
+}
