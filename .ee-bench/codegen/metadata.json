@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-4b7ea2977be2747496ba792a678940baa985f7ea-v0f5aece3601a5b4419f7ccec1dbda2071be28ee4",
+  "base_commit": "86d9b8a203cab5bc446614f3cbffd77b4751084a",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author0]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author1]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author2]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_natural_order[author3]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author0]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author1]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author2]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author3]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author4]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_import_author_name_unchanged[author5]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::test_build_query",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_importer_drops_honorifics[Mr.-Mr.]",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_match_is_case_insensitive_for_names",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_author_wildcard_match_with_no_matches_creates_author_with_wildcard",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_first_match_ol_key",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_conflicting_ids_cause_error",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_second_match_remote_identifier",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_third_match_priority_name_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_non_matching_birth_death_creates_new_author",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_match_priority_alternate_names_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_last_match_on_surname_and_dates",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_last_match_on_surname_and_dates_and_dates_are_required",
+      "openlibrary/catalog/add_book/tests/test_load_book.py::TestImportAuthor::test_birth_and_death_date_match_is_on_year_strings"
+    ],
+    "pass_to_pass": []
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/catalog/add_book/tests/test_load_book.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-4b7ea2977be2747496ba792a678940baa985f7ea-v0f5aece3601a5b4419f7ccec1dbda",
+    "before_repo_set_cmd": "git reset --hard 86d9b8a203cab5bc446614f3cbffd77b4751084a\ngit clean -fd \ngit checkout 86d9b8a203cab5bc446614f3cbffd77b4751084a \ngit checkout 4b7ea2977be2747496ba792a678940baa985f7ea -- openlibrary/catalog/add_book/tests/test_load_book.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "api_feat",
+      "core_feat",
+      "integration_feat"
+    ],
+    "issue_categories": [
+      "api_knowledge",
+      "back_end_knowledge",
+      "database_knowledge"
+    ],
+    "interface": "Name: SUSPECT_DATE_EXEMPT_SOURCES\n\nType: Constant\n\nFile: openlibrary/catalog/add_book/__init__.py\n\nInputs/Outputs:\n\n  Input: N/A (constant definition)\n\n  Output: Final list containing [\"wikisource\"]\n\nDescription: New constant that defines source records exempt from suspect date scrutiny during book import validation.\n\nName: AuthorRemoteIdConflictError\n\nType: Exception Class\n\nFile: openlibrary/core/models.py\n\nInputs/Outputs:\n\n  Input: Inherits from ValueError\n\n  Output: Exception raised when conflicting remote IDs are detected for authors\n\nDescription: New exception class for handling conflicts when merging author remote identifiers during import processes.\n\nName: merge_remote_ids\n\nType: Method\n\nFile: openlibrary/core/models.py\n\nInputs/Outputs:\n\n  Input: self (Author instance), incoming_ids (dict[str, str])\n\n  Output: tuple[dict[str, str], int] - merged remote IDs and conflict count\n\nDescription: New method on Author class that merges the author's existing remote IDs with incoming remote IDs, returning the merged result and count of matching identifiers. Raises AuthorRemoteIdConflictError if conflicts are detected."
+  }
+}

@@ -1,0 +1,104 @@
+###############################################
+# BASE IMAGE
+###############################################
+FROM python:3.12.2-slim
+
+###############################################
+# WORKING DIRECTORY
+###############################################
+# Set working directory, the repo should always be cloned into /app
+# DO NOT MODIFY THIS SECTION
+RUN mkdir /app
+WORKDIR /app
+
+###############################################
+# SYSTEM DEPENDENCIES
+###############################################
+# Install required system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    libpq-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    zlib1g-dev \
+    nodejs \
+    npm \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Setup basic python environment which is needed for final post-processing and scoring
+RUN apt-get update && apt-get install -y python3 python-is-python3
+
+###############################################
+# REPO SETUP
+###############################################
+RUN git clone https://github.com/dpaia/openlibrary.git .
+
+# Pin to specific commit explicitly
+RUN git checkout 0f5aece3601a5b4419f7ccec1dbda2071be28ee4
+
+###############################################
+# ENTRYPOINT / CMD
+###############################################
+
+# Write preprocess and build scripts
+ENV PYTEST_ADDOPTS="--tb=short -v --continue-on-collection-errors --reruns=3"
+ENV UV_HTTP_TIMEOUT=60
+
+RUN cat <<'EOFPREP' > /preprocess.sh
+#!/bin/bash
+
+cd /app
+
+git reset --hard 86d9b8a203cab5bc446614f3cbffd77b4751084a
+git clean -fdx
+git checkout 86d9b8a203cab5bc446614f3cbffd77b4751084a
+
+cd /
+
+EOFPREP
+RUN chmod +x /preprocess.sh
+RUN /preprocess.sh
+
+RUN cat <<'EOFBUILD' > /build.sh
+#!/bin/sh
+pip install setuptools || true
+pip install pypi-timemachine
+pypi-timemachine 2025-03-27 --port 9876 &
+pip config set global.index-url http://127.0.0.1:9876/
+sleep 3
+pip install pytest-rerunfailures
+export PYTEST_ADDOPTS="--tb=short -v --continue-on-collection-errors --reruns=3"
+
+cd /app
+set -e
+
+pip install -r requirements_test.txt
+
+npm install --no-audit
+
+export PYTHONPATH=/app
+export OL_CONFIG=/app/conf/openlibrary.yml
+
+echo "================= 0909 BUILD START 0909 ================="
+make css || true
+make js || true
+make components || true
+
+make i18n || true
+
+git submodule init || true
+git submodule sync || true
+git submodule update || true
+echo "================= 0909 BUILD END 0909 ================="
+
+EOFBUILD
+RUN chmod +x /build.sh
+RUN /build.sh
+
+LABEL ee-bench.type="codegen"
+LABEL ee-bench.version="1.0"
+RUN rm -rf /app/.ee-bench/ 2>/dev/null || true
