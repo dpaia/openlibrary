@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "instance_id": "instance_internetarchive__openlibrary-89e4b4431fe7506c365a6f6eb6f6d048d04c044c-v08d8e8889ec945ab821fb156c04c7d2e2810debb",
+  "base_commit": "64c18604714c0672f272ee1e620ad62e9a248312",
+  "benchmark_type": "codegen",
+  "expected": {
+    "fail_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestMakeWork::test_make_author_adds_the_correct_key",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestMakeWork::test_make_work_handles_no_author"
+    ],
+    "pass_to_pass": [
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_authors",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_editing_orphan_creates_work",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_never_create_an_orphan",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_moving_orphan",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_moving_orphan_ignores_work_edits",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_editing_work",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_editing_edition",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_editing_work_and_edition",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_moving_edition",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_moving_edition_ignores_changes_to_work",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestSaveBookHelper::test_moving_edition_to_new_work",
+      "openlibrary/plugins/upstream/tests/test_addbook.py::TestMakeWork::test_make_work_does_indeed_make_a_work"
+    ]
+  },
+  "eval": {
+    "timeout_seconds": 600,
+    "selected_test_files_to_run": [
+      "openlibrary/plugins/upstream/tests/test_addbook.py"
+    ]
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerhub_tag": "internetarchive.openlibrary-internetarchive__openlibrary-89e4b4431fe7506c365a6f6eb6f6d048d04c044c-v08d8e8889ec945ab821fb156c04c7",
+    "before_repo_set_cmd": "git reset --hard 64c18604714c0672f272ee1e620ad62e9a248312\ngit clean -fd \ngit checkout 64c18604714c0672f272ee1e620ad62e9a248312 \ngit checkout 89e4b4431fe7506c365a6f6eb6f6d048d04c044c -- openlibrary/plugins/upstream/tests/test_addbook.py"
+  },
+  "fields": {
+    "repo": "internetarchive/openlibrary",
+    "repo_language": "python",
+    "issue_specificity": [
+      "edge_case_bug",
+      "code_quality_enh",
+      "refactoring_enh"
+    ],
+    "issue_categories": [
+      "back_end_knowledge"
+    ],
+    "interface": "No new interfaces are introduced."
+  }
+}
